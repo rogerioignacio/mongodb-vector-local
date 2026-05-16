@@ -57,6 +57,7 @@ Check versions:
 
 ```bash
 docker version
+docker composer --version
 git --version
 mongosh --version
 python3.11 --version
@@ -75,7 +76,7 @@ brew install python@3.11
 Clone the repo:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/mongodb-vector-local.git
+git clone https://github.com/rogerioignacio/mongodb-vector-local.git
 cd mongodb-vector-local
 ```
 
