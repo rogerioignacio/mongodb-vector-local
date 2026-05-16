@@ -3,6 +3,21 @@ set -e
 
 MONGO_URI="mongodb://root:root-password@localhost:27017/rag_demo?authSource=admin&directConnection=true"
 
+echo "Ensuring rag_demo.documents collection exists..."
+
+mongosh "$MONGO_URI" --quiet --eval '
+try {
+  db.createCollection("documents");
+  print("Created collection: documents");
+} catch (e) {
+  if (e.codeName === "NamespaceExists") {
+    print("Collection already exists: documents");
+  } else {
+    throw e;
+  }
+}
+'
+
 echo "Waiting for MongoDB Search commands to become available..."
 
 for i in {1..30}; do
